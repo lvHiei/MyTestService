@@ -12,8 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = this.getClass().getName();
-
+    private MyLog log = new MyLog(this.getClass().getName());
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -24,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.i(TAG, "onServiceConnected pid " + android.os.Process.myPid());
+            log.i( "onServiceConnected pid " + android.os.Process.myPid());
             IMyBinderInterface binder = IMyBinderInterface.Stub.asInterface(service);
             try {
                 mBinder = IAddBinder.Stub.asInterface(binder.getBinder());
                 int r = mBinder.add(5, 15);
-                Log.e(TAG, "onServiceConnected: r is " + r);
+                log.e( "onServiceConnected: r is " + r);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Log.i(TAG, "onServiceDisconnected pid " + android.os.Process.myPid());
+            log.i( "onServiceDisconnected pid " + android.os.Process.myPid());
         }
     };
 

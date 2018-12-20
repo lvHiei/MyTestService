@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
-import android.util.Log;
 
 public class TService1 extends Service {
-    private final String TAG = this.getClass().getName();
+    private MyLog log = new MyLog(this.getClass().getName());
     private IBinder mTestBinderInterface = new IMyBinderInterface.Stub() {
         @Override
         public IBinder getBinder() throws RemoteException {
@@ -19,7 +18,7 @@ public class TService1 extends Service {
     private IBinder mAddBinder = new IAddBinder.Stub() {
         @Override
         public int add(int x, int y) throws RemoteException {
-            Log.i(TAG, "add pid is " + Process.myPid());
+            log.i( "add pid is " + Process.myPid());
             return x + y;
         }
     };
@@ -27,31 +26,31 @@ public class TService1 extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
-        Log.i(TAG, "onBind pid " + Process.myPid());
+        log.i( "onBind pid " + Process.myPid());
         return mTestBinderInterface;
     }
 
     @Override
     public void onCreate() {
-        Log.i(TAG, "onCreate pid " + Process.myPid());
+        log.i( "onCreate pid " + Process.myPid());
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG, "onStartCommand pid " + Process.myPid());
+        log.i( "onStartCommand pid " + Process.myPid());
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.i(TAG, "onUnbind pid " + Process.myPid());
+        log.i( "onUnbind pid " + Process.myPid());
         return super.onUnbind(intent);
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "onDestroy pid " + Process.myPid());
+        log.i( "onDestroy pid " + Process.myPid());
         super.onDestroy();
     }
 
