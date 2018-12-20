@@ -5,6 +5,8 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.lvhiei.mytestservice.renderer.MyRenderer;
+
 public class RenderActivity extends Activity {
     private MyLog log = new MyLog(this.getClass().getName());
     private GLSurfaceView mSurfaceView;

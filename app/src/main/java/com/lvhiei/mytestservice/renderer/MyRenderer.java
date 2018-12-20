@@ -1,10 +1,13 @@
-package com.lvhiei.mytestservice;
+package com.lvhiei.mytestservice.renderer;
 
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
+import com.lvhiei.mytestservice.camera.CameraHelper;
+import com.lvhiei.mytestservice.glutil.GLRender;
+import com.lvhiei.mytestservice.MyLog;
 import com.lvhiei.mytestservice.glutil.OpenGLUtils;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.lvhiei.mytestservice;
+package com.lvhiei.mytestservice.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,6 +7,8 @@ import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Build;
+
+import com.lvhiei.mytestservice.MyLog;
 
 import java.io.IOException;
 import java.util.ArrayList;

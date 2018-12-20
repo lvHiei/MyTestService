@@ -1,4 +1,4 @@
-package com.lvhiei.mytestservice;
+package com.lvhiei.mytestservice.glutil;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;

@@ -1,4 +1,4 @@
-package com.lvhiei.mytestservice;
+package com.lvhiei.mytestservice.camera;
 
 /**
  * Created by mj on 16-2-19.
