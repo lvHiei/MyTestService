@@ -19,9 +19,30 @@ public class RenderActivity extends Activity {
 
         mSurfaceView = findViewById(R.id.ts_glsurfaceView);
         mRenderer = new MyRenderer();
+        mRenderer.setSurfaceView(mSurfaceView);
         mSurfaceView.setEGLContextClientVersion(2);
         mSurfaceView.setRenderer(mRenderer);
         mSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         log.i("RenderActivity onCreate pid " + android.os.Process.myPid());
+    }
+
+    @Override
+    protected void onResume() {
+        log.i("onResume");
+        super.onResume();
+        mRenderer.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        log.i("onPause");
+        super.onPause();
+        mRenderer.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        log.i("onDestroy");
+        super.onDestroy();
     }
 }
