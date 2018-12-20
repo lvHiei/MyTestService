@@ -8,6 +8,7 @@ import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,7 +49,24 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+
+        findViewById(R.id.btn_to_render).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.btn_to_render:
+                        gotoRenderActivity();
+                        break;
+                }
+            }
+        });
+
         startservice();
+    }
+
+    private void gotoRenderActivity() {
+        Intent intent = new Intent(this, RenderActivity.class);
+        startActivity(intent);
     }
 
     @Override

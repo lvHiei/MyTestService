@@ -19,9 +19,13 @@
 
         <service
             android:name=".TService1"
-            android:process=":tservice"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"
+            android:process=":tservice" />
+
+        <activity android:name=".RenderActivity"
+            android:process=":tservice"
+            ></activity>
     </application>
 
 </manifest>
