@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
  * Created by mj on 18-12-20.
  */
 
-public class MyRenderer implements GLSurfaceView.Renderer {
+public class CameraRenderer extends BaseRender {
     private MyLog log = new MyLog(this.getClass().getName());
     private int mCameraTextureId = OpenGLUtils.NO_TEXTURE;
     private GLSurfaceView mSurfaceView;
@@ -31,15 +31,17 @@ public class MyRenderer implements GLSurfaceView.Renderer {
     private int mViewWidth;
     private int mViewHeight;
 
+    @Override
     public void setSurfaceView(GLSurfaceView surfaceView){
         mSurfaceView = surfaceView;
     }
 
+    @Override
     public void onResume(){
         mSurfaceView.requestRender();
     }
 
-
+    @Override
     public void onPause(){
         mSurfaceView.queueEvent(new Runnable() {
             @Override

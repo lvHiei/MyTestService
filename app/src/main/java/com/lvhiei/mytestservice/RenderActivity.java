@@ -5,12 +5,13 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.lvhiei.mytestservice.renderer.MyRenderer;
+import com.lvhiei.mytestservice.renderer.BaseRender;
+import com.lvhiei.mytestservice.renderer.CameraRenderer;
 
 public class RenderActivity extends Activity {
     private MyLog log = new MyLog(this.getClass().getName());
     private GLSurfaceView mSurfaceView;
-    private MyRenderer mRenderer;
+    private BaseRender mRenderer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,16 @@ public class RenderActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mSurfaceView = findViewById(R.id.ts_glsurfaceView);
-        mRenderer = new MyRenderer();
-        mRenderer.setSurfaceView(mSurfaceView);
+        createRender();
         mSurfaceView.setEGLContextClientVersion(2);
         mSurfaceView.setRenderer(mRenderer);
         mSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         log.i("RenderActivity onCreate pid " + android.os.Process.myPid());
+    }
+
+    private void createRender(){
+        mRenderer = new CameraRenderer();
+        mRenderer.setSurfaceView(mSurfaceView);
     }
 
     @Override
