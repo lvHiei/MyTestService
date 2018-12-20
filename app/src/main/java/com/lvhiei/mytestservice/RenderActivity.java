@@ -1,8 +1,10 @@
 package com.lvhiei.mytestservice;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.lvhiei.mytestservice.renderer.BaseRender;
@@ -20,12 +22,28 @@ public class RenderActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        findViewById(R.id.btn_backto_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.btn_backto_main:
+                        gotoMainActivity();
+                        break;
+                }
+            }
+        });
+
         mSurfaceView = findViewById(R.id.ts_glsurfaceView);
         createRender();
         mSurfaceView.setEGLContextClientVersion(2);
         mSurfaceView.setRenderer(mRenderer);
         mSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         log.i("RenderActivity onCreate pid " + android.os.Process.myPid());
+    }
+
+    private void gotoMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void createRender(){

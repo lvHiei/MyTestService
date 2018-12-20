@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".RenderActivity">
 
-    <TextView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="text view hh" />
 
     <android.opengl.GLSurfaceView android:id="@+id/ts_glsurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn_backto_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BackToMain"/>
 
 </android.support.constraint.ConstraintLayout>
