@@ -2,8 +2,6 @@ package com.lvhiei.mytestservice.renderer;
 
 import android.opengl.GLSurfaceView;
 
-import com.lvhiei.mytestservice.glutil.OpenGLUtils;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 

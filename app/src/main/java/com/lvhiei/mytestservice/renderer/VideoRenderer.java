@@ -10,8 +10,8 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 public class VideoRenderer extends BaseRender {
-    
 
+    private String mVideoUrl = "/sdcard/test.mp4";
 
     @Override
     public void setSurfaceView(GLSurfaceView surfaceView) {
